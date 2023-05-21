@@ -84,11 +84,13 @@ class EmailService
             $subject = mb_decode_mimeheader($header['subject']);
             $body = imap_body($connect_imap, $num_mail);
             preg_match_all('|\d+|', $body, $matches);
-            $id = $matches[0][0];
-            $emails[] = [
-                'title' => $subject,
-                'body' => $id
-            ];
+            if (isset($matches[0][0])) {
+                $id = $matches[0][0];
+                $emails[] = [
+                    'title' => $subject,
+                    'body' => $id
+                ];
+            }
         }
         return $emails;
     }
