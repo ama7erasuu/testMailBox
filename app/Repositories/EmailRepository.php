@@ -12,8 +12,8 @@ class EmailRepository
      */
     public function create(array $data): void
     {
-        Email::create($data);
+         Email::create($data);
     }
 
-    
+
 }
